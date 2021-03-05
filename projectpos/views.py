@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.shortcuts import render
-
+from .models import Owner
 
 # Create your views here.
 #Start Tong
@@ -69,7 +69,9 @@ def View_Employee(request):
 def Orderhis(request):
     return render(request,'Orderhis.html')
 def Report(request):
-    return render(request,'Report.html')
+    #Query Data From Model
+    data = Owner.objects.all()
+    return render(request,'Report.html',{'posts':data})
 def Tipsd(request):
     return render(request,'Tipsd.html')
 #Stop Bank
